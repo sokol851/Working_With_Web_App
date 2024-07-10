@@ -1,6 +1,6 @@
 from urllib.parse import urlparse, parse_qs
 from http.server import BaseHTTPRequestHandler
-from config import ROOT_DIR
+import requests
 
 
 class MyServer(BaseHTTPRequestHandler):
@@ -9,8 +9,9 @@ class MyServer(BaseHTTPRequestHandler):
     """
 
     def __get_html_content(self):
-        with open(f"{ROOT_DIR}/index.html", 'r') as f:
-            return f.read()
+        response = requests.get('https://raw.githubusercontent.com/sokol851/Working_With_Web_App/main/index.html')
+        data = response.text
+        return data
 
     def do_GET(self):
         """ Метод для обработки входящих GET-запросов """
