@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from http.server import HTTPServer
 from src.server import MyServer
 
